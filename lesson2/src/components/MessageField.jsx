@@ -1,36 +1,46 @@
 import React from 'react';
-import Message from './Message';
+import Mes from './Message';
+import Input from './input';
 
 export default class MessageField extends React.Component {
-    constructor(props) {
-        super(props);
-        console.log("------------constructor");
-        this.state = {
-              author: 'Я',
-              messages: 'Привет! Как дела ?'
-        }
-      }
+    state = { 
+        messages: [{ text:'Привет!', author: 'Я'}, { text: 'Как дела ?', author: 'Я' }]
+    }
     
-    handleClick = () => {
-       this.setState({ messages: 'Привет! Как дела ?', author: 'Я'});
-    };
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
+    }
 
-    componentDidUpdate() {
-        console.log('------------componentDidUpdate');
-        if (this.state.author === 'Я') { 
-            setTimeout(() => this.setState({messages: 'Дела нормально', author: 'Я Робот'}), 1000);
+    componentDidUpdate(prevProps, prevState) {
+        const lastAuthor = this.state.messages[this.state.messages.length-1].author;
+
+        if (prevState.messages.length < this.state.messages.length && lastAuthor !== 'Робот') { 
+            this.timeout = setTimeout(() => {
+                this.handleAddMessage('Я есть Робот :)', 'Робот')
+            }, 1200);
         }
     }
  
-    render() {
-        const messageElements = (<Message text={ this.state.messages }/>);
+
+    RenderMessage = (message, i) => {
         return (
-            <div>
-                Автор: {this.state.author}
-                {messageElements }
-                <button onClick={ this.handleClick }>Отправить сообщение</button>
-            </div>
+            <Mes message={ message } key={i} />
         )
+    }
+
+    handleAddMessage = (text, author = 'Я') => {
+        this.setState(state => ({
+            messages: [...state.messages, {text, author}]
+        }));
+    }
+
+    render() {
+        return ( 
+        <>
+            {this.state.messages.map(this.RenderMessage)}
+            <Input onAddMessage={this.handleAddMessage} />
+        </>
+        );
     }
  }
  
