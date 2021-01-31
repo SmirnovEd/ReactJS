@@ -4,32 +4,28 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { };
   }
-   
 
   render() {
-    const { title } = this.props;
-
+    const { chatId } = this.props;
+    
     return (
-      <div>
-        <AppBar position="static" className="header_bg">
-            <Toolbar>
-            <Typography variant="h6" >
-                {title}
-            </Typography>
-            </Toolbar>
-        </AppBar>
-      </div>  
+      <AppBar position="static" className="header_bg">
+        <Toolbar>
+          <Typography variant="h6">
+            { chatId }
+          </Typography>
+        </Toolbar>
+      </AppBar>
     );
   }
 }
 
 Header.propTypes = {
-    title: PropTypes.string,
+  chatId: PropTypes.number.isRequired,
 };

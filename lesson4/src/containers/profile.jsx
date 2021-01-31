@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class Profile extends React.Component {
+export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -13,6 +13,6 @@ export default class Profile extends React.Component {
   }
 
   render() {
-    return (<>None</>);
+    return (<>111</>);
   }
 }

@@ -21,7 +21,7 @@ body {
 button {
     display: block;
     line-height: 36px;
-    background-color: rgba(21, 94, 3, 0.96);
+    background-color: rgba(13, 148, 31, 0.8);
     user-select: none;
     border: 0;
     color: #edf6fb;
@@ -31,13 +31,13 @@ button {
 }
 
 button:hover {
-    background-color: rgba(13, 148, 31, 0.8);
+    background-color: rgba(95, 151, 3, 0.96);
 }
 
 input[type='text'] {
     flex: 1;
     border: 2;
-    background-color: #17212b;
+    background-color: #024702;
     line-height: 36px;
     color: #edf6fb;
     border-bottom: 1px solid #0bac18;
@@ -102,4 +102,42 @@ input[type='text'] {
 
 .header_bg {
     background-color:#026902 !important;
+}
+
+.homeicon {
+    margin-right: "spacing(0.5)";
+    width: "20px";
+    height: "20px";
+}
+
+.addnewchat {
+    padding: 10px !important;
+ }
+
+ .chatlist {
+    width: "100%";
+    color: "#e43af1";
+ }
+
+.listItemChatLink {
+    text-decoration: "none";
+    color: "white";
+}
+
+.listItemChat {
+    white-space: "nowrap";
+    background-color: "#3ff644";
+}
+
+.icon {
+    margin-right: spacing(0.5);
+    width: "20px";
+    height: "20px";
+    color: rgb(159, 238, 218);
+}
+
+
+.MuiButtonBase-root:hover {
+    background-color: #3ff644 !important;
+    
 }
